@@ -1,0 +1,133 @@
+/* Mengatur tampilan keseluruhan layar */
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    text-align: center; /* Membuat teks di dalam kontainer rata tengah */
+}
+
+.container {
+    overflow: hidden;
+    text-align: center; /* Mengatur teks agar rata tengah dalam kontainer */
+}
+
+.animated-text {
+    font-size: 100px; /* Ukuran font untuk h1 */
+    font-weight: bold;
+    color: #0a4971;
+    white-space: nowrap;
+    display: inline-block; /* Agar bisa mengatur transformasi secara independen */
+}
+
+/* Animasi untuk Congrats dari kanan */
+.congrats {
+    transform: translateX(100vw); /* Memulai jauh di luar layar kanan */
+    transition: transform 2s ease-out; /* Transisi animasi */
+}
+
+/* Animasi untuk Gege dari kiri */
+.gege {
+    transform: translateX(-100vw); /* Memulai jauh di luar layar kiri */
+    transition: transform 2s ease-out; /* Transisi animasi */
+}
+
+/* Mengatur ukuran font dan gaya untuk h3 */
+.animated-text2 {
+    font-size: 23px; /* Ukuran font untuk pesan tambahan, lebih kecil dari h1 */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #052043; /* Warna teks untuk pesan tambahan */
+    margin-top: 20px; /* Jarak atas untuk memberikan spasi dari h1 */
+    opacity: 0; /* Memulai dengan transparan */
+    transform: translateY(20px); /* Memindahkan sedikit ke bawah */
+    transition: transform 2s ease-out, opacity 2s ease-out; /* Animasi untuk pesan tambahan */
+    padding: 20px; /* Jarak di dalam kotak */
+    border: 2px solid #5bdada; /* Warna border kotak */
+    border-radius: 10px; /* Sudut yang membulat */
+    background-color: rgb(20, 162, 219); /* Warna latar belakang dengan transparansi */
+    display: inline-block; /* Memastikan kotak sesuai dengan konten */
+}
+
+/* Ketika kelas start-animation ditambahkan */
+.congrats.start-animation {
+    transform: translateX(0); /* Bergerak ke posisi normal */
+}
+
+.gege.start-animation {
+    transform: translateX(0); /* Bergerak ke posisi normal */
+}
+
+/* Ketika kelas start-animation ditambahkan pada h3 */
+.animated-text2.start-animation {
+    opacity: 1; /* Tampilkan pesan tambahan */
+    transform: translateY(0); /* Bergerak ke posisi normal */
+}
+
+h2 {
+    font-size: 180px; /* Ukuran font untuk hitungan mundur */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #224899; /* Warna hitungan mundur */
+    position: absolute; /* Agar bisa ditempatkan di tengah layar */
+    top: 30%; /* Tengah vertikal */
+    left: 50%; /* Tengah horizontal */
+    transform: translate(-50%, -50%); /* Memindahkan ke pusat */
+}
+
+.countdown {
+    font-size: 180px; /* Ukuran font untuk hitungan mundur */
+    color: #16518b; /* Warna hitungan mundur */
+    position: absolute; /* Agar bisa ditempatkan di tengah layar */
+    top: 30%; /* Tengah vertikal */
+    left: 50%; /* Tengah horizontal */
+    transform: translate(-50%, -50%); /* Memindahkan ke pusat */
+    opacity: 1; /* Memulai dengan opacity penuh */
+}
+
+/* Media query untuk perangkat seluler */
+@media (max-width: 768px) {
+    .animated-text {
+        font-size: 40px; /* Ukuran font yang lebih kecil untuk layar ponsel */
+    }
+
+    .animated-text2 {
+        font-size: 15px; /* Ukuran font untuk pesan tambahan pada layar ponsel */
+    }
+}
+
+.modal {
+    display: none; /* Tersembunyi secara default */
+    position: fixed; /* Tetap di tempat */
+    z-index: 1; /* Menjadi lapisan teratas */
+    left: 0;
+    top: 0;
+    width: 100%; /* Lebar penuh */
+    height: 100%; /* Tinggi penuh */
+    overflow: auto; /* Aktifkan scroll jika perlu */
+    background-color: rgba(0, 0, 0, 0.4); /* Hitam dengan opasitas */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% dari atas dan ditengah */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Dapat lebih atau kurang, tergantung ukuran layar */
+}
+
+.ok-button {
+    background-color: #4CAF50; /* Warna latar belakang hijau */
+    color: white; /* Warna teks putih */
+    padding: 10px 20px; /* Jarak dalam tombol */
+    border: none; /* Tanpa border */
+    border-radius: 5px; /* Sudut membulat */
+    cursor: pointer; /* Menunjukkan kursor sebagai pointer */
+    font-size: 16px; /* Ukuran font */
+}
+
+.ok-button:hover {
+    background-color: #45a049; /* Warna latar belakang saat hover */
+}

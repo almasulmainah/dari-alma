@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Alma Cute</title>
+    <link rel="stylesheet" href="style.css">
+
+<script>
+window.onload = function() {
+    const modal = document.getElementById("customAlert");
+    const confirmModal = document.getElementById("confirmModal");
+    modal.style.display = "block"; // Tampilkan modal alert
+
+    const okButton = document.querySelector(".ok-button");
+    okButton.onclick = function() {
+        modal.style.display = "none"; // Sembunyikan modal alert
+        showConfirmModal(); // Tampilkan modal konfirmasi
+    }
+
+    function showConfirmModal() {
+        confirmModal.style.display = "block"; // Tampilkan modal konfirmasi
+    }
+
+    const confirmButton = document.querySelector(".confirm-button");
+    confirmButton.onclick = function() {
+        confirmModal.style.display = "none"; // Sembunyikan modal konfirmasi
+        startCountdown(); // Mulai hitung mundur jika pengguna mengkonfirmasi
+    }
+
+    const cancelButton = document.querySelector(".cancel-button");
+    cancelButton.onclick = function() {
+        // Jika pengguna mengklik "Tidak", modal konfirmasi akan tetap ditampilkan
+        confirmModal.style.display = "block"; // Tampilkan modal konfirmasi lagi
+    }
+
+    function startCountdown() {
+        let countdown = 3; // Mulai hitung mundur dari 3
+        const countdownElement = document.createElement("h2");
+        countdownElement.classList.add("countdown");
+        document.body.appendChild(countdownElement); // Tambahkan elemen ke body
+
+        const showCountdown = () => {
+            if (countdown > 0) {
+                countdownElement.innerText = countdown; // Tampilkan hitungan mundur
+                countdown--; // Kurangi hitungan mundur
+                setTimeout(showCountdown, 1000); // Panggil lagi setiap detik
+            } else {
+                countdownElement.remove(); // Hapus elemen hitungan mundur
+                document.querySelector(".animated-text.congrats").classList.add("start-animation");
+                document.querySelector(".animated-text.gege").classList.add("start-animation");
+                document.querySelector(".animated-text2").classList.add("start-animation");
+            }
+        };
+
+        showCountdown(); // Memanggil fungsi untuk memulai hitungan mundur
+    }
+};
+
+</script> 
+
+</head>
+<body>
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <p>sidangnya udah belom?</p>
+            <button class="ok-button">udah</button>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <p>Lancar nggak?</p>
+            <button class="confirm-button">Ya</button>
+            <button class="cancel-button">Tidak</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>
+            <span class="animated-text congrats">Congratulation</span>
+            <br>
+            <span class="animated-text gege">M. Gelarrr Alghifari</span>
+        </h1>
+        <h3 class="animated-text2">Maaf Alma gak bisa dateng ke kampus and no special prize 
+            <br>intinya you're great bisa sidang tepat waktu dan gk ketiduran pagi ini :(
+                <br>aku bikin ini sebelum tidur, sekarang aku udah tidur panjang nanti bangun asar or sebelum magrib
+        </h3>
+    </div>
+</body>
+</html>
